@@ -20,4 +20,7 @@ This helps docker to know what library, or the images need for Spring Boot appli
      Note: "."
 4. Docker run
    - After the application had become an image, it changes to container
-    docker run -d -p 8080:8080 hello-docker 
+    docker run -d -p 8080:8080 hello-docker
+     -------------------------------------------------------------------------------------------------------------------
+
+    
