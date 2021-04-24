@@ -1,0 +1,50 @@
+version: '3'
+services:
+  hello-docker:
+    container_name: hello-docker
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: hello-docker:latest
+    ports:
+      - 8081:8080
+    volumes:
+      - hello-docker:/home/app/src
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - learning-docker
+  db:
+    container_name: mysql_database
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: docker
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - "3307:3306"
+    volumes:
+      - hello-docker:/var/lib/mysql
+    restart: always
+    networks:
+      - learning-docker
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:2.0.0
+    command: -H unix:///var/run/docker.sock
+    ports:
+      - 9000:9000
+      - 8000:8000
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - hello-docker:/data
+    networks:
+      - learning-docker
+networks:
+  learning-docker:
+    driver: bridge
+volumes:
+  hello-docker:
