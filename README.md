@@ -1,14 +1,12 @@
-Run Spring Boot Application by Docker 
+DOCKERFILE 
 1. mvn package
 This command line allows maven creates a jar file which was built for java application and located in target folder
 2. Dockerfile 
 This helps docker to know what library, or the images need for Spring Boot application
    Let me explain some elements in Dockerfile:
    - FROM adoptopenjdk/openjdk11:alpine-jre
-    Pull java image from docker hub, because all of java application must be compiled on Java Virtual Machine. It means your
+    Pull java image from docker hub, because all java application must be compiled on Java Virtual Machine. It means your
      application needs to have the environment for Java running, so that why wants it
-   - WORKDIR /app/vsap
-    Create the folder in your own server and everything related to application will be created and compiled there
    - ARG JAR_FILE=target/docker-0.0.1-SNAPSHOT.jar
     Pick jar file up from target folder and assigned to JAR_FILE
    - COPY ${JAR_FILE} hello-docker.jar
@@ -21,6 +19,8 @@ This helps docker to know what library, or the images need for Spring Boot appli
 4. Docker run
    - After the application had become an image, it changes to container
     docker run -d -p 8080:8080 hello-docker
-     -------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+DOCKER_COMPOSE
+
 
     
