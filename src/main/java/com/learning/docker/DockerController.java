@@ -13,6 +13,6 @@ public class DockerController {
 
     @GetMapping("")
     public String helloDocker() {
-        return "Hello Docker. Nam Nguyen is here";
+        return "Deploy to Heroku";
     }
 }
