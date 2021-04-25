@@ -10,15 +10,9 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class DockerController {
-    private final DockerRepository dockerRepo;
 
     @GetMapping("")
-    public List<Docker> helloDocker() {
-        List<Docker> dockers = Arrays.asList(
-                new Docker(1, "hello-docker", "hello-docker"),
-                new Docker(2, "mysql:5.7", "mysql_database"),
-                new Docker(3, "portainer/portainer-ce:2.0.0", "portainer")
-        );
-        return dockerRepo.saveAll(dockers);
+    public String helloDocker() {
+        return "Hello Docker. Nam Nguyen is here";
     }
 }
